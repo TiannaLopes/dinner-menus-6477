@@ -109,10 +109,6 @@
 <script setup lang="ts">
 import type { ScrapedRecipe } from '~/types/database'
 
-definePageMeta({
-  middleware: 'auth'
-})
-
 const router = useRouter()
 const { createRecipe } = useRecipes()
 

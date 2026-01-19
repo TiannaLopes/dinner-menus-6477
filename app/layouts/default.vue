@@ -7,9 +7,12 @@
             <NuxtLink to="/" class="text-xl font-bold text-primary-600">
               Dinner Menu Planner
             </NuxtLink>
-            <div class="hidden md:ml-10 md:flex md:space-x-8" v-if="user">
-              <NuxtLink to="/" class="px-3 py-2 text-sm font-medium text-evergreen-700 hover:text-primary-600">
+            <div class="hidden md:ml-10 md:flex md:space-x-8">
+              <NuxtLink to="/menu" class="px-3 py-2 text-sm font-medium text-evergreen-700 hover:text-primary-600">
                 Weekly Menu
+              </NuxtLink>
+              <NuxtLink to="/shopping-list" class="px-3 py-2 text-sm font-medium text-evergreen-700 hover:text-primary-600">
+                Shopping List
               </NuxtLink>
               <NuxtLink to="/recipes" class="px-3 py-2 text-sm font-medium text-evergreen-700 hover:text-primary-600">
                 Recipes
@@ -18,12 +21,6 @@
                 All Menus
               </NuxtLink>
             </div>
-          </div>
-          <div class="flex items-center space-x-4">
-            <span v-if="user" class="text-sm text-evergreen-600">{{ user.email }}</span>
-            <button v-if="user" @click="handleSignOut" class="btn btn-secondary">
-              Sign Out
-            </button>
           </div>
         </div>
       </div>

@@ -26,6 +26,35 @@
           <input v-model="customMealName" type="text" class="input" placeholder="e.g., Pizza Night" />
         </div>
 
+        <!-- Ingredients -->
+        <div>
+          <label class="label">Ingredients</label>
+          <div class="space-y-2">
+            <div v-for="(ingredient, index) in ingredients" :key="index" class="flex gap-2">
+              <input 
+                v-model="ingredients[index]" 
+                type="text" 
+                class="input flex-1" 
+                placeholder="e.g., 2 cups flour"
+              />
+              <button 
+                type="button" 
+                @click="removeIngredient(index)" 
+                class="btn btn-secondary px-3"
+              >
+                ×
+              </button>
+            </div>
+            <button 
+              type="button" 
+              @click="addIngredient" 
+              class="btn btn-secondary text-sm"
+            >
+              + Add Ingredient
+            </button>
+          </div>
+        </div>
+
         <!-- Notes -->
         <div>
           <label class="label">Notes</label>
@@ -66,16 +95,46 @@ const { addMenuItem, updateMenuItem } = useMenus()
 const recipes = ref<Recipe[]>([])
 const selectedRecipeId = ref<string | null>(props.menuItem?.recipe_id || null)
 const customMealName = ref(props.menuItem?.custom_meal_name || '')
+const ingredients = ref<string[]>(props.menuItem?.ingredients || [''])
 const notes = ref(props.menuItem?.notes || '')
 const saving = ref(false)
 
 onMounted(async () => {
   try {
     recipes.value = await fetchRecipes()
+    // If a recipe is selected, populate ingredients from it
+    if (selectedRecipeId.value) {
+      loadRecipeIngredients()
+    }
   } catch (error) {
     console.error('Error loading recipes:', error)
   }
 })
+
+// Watch for recipe selection changes
+watch(selectedRecipeId, (newRecipeId) => {
+  if (newRecipeId) {
+    loadRecipeIngredients()
+  }
+})
+
+const loadRecipeIngredients = () => {
+  const recipe = recipes.value.find(r => r.id === selectedRecipeId.value)
+  if (recipe && recipe.ingredients.length > 0) {
+    ingredients.value = [...recipe.ingredients]
+  }
+}
+
+const addIngredient = () => {
+  ingredients.value.push('')
+}
+
+const removeIngredient = (index: number) => {
+  ingredients.value.splice(index, 1)
+  if (ingredients.value.length === 0) {
+    ingredients.value.push('')
+  }
+}
 
 const saveMeal = async () => {
   if (!selectedRecipeId.value && !customMealName.value) {
@@ -85,12 +144,16 @@ const saveMeal = async () => {
 
   saving.value = true
   try {
+    // Filter out empty ingredients
+    const filteredIngredients = ingredients.value.filter(ing => ing.trim() !== '')
+    
     const mealData = {
       menu_id: props.menuId,
       day_of_week: props.dayOfWeek,
       meal_type: 'dinner' as const,
       recipe_id: selectedRecipeId.value,
       custom_meal_name: customMealName.value || null,
+      ingredients: filteredIngredients,
       notes: notes.value || null,
       assigned_to: null
     }

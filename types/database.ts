@@ -51,6 +51,7 @@ export interface Database {
           meal_type: 'dinner'
           recipe_id: string | null
           custom_meal_name: string | null
+          ingredients: string[]
           notes: string | null
           assigned_to: string | null
           created_at: string

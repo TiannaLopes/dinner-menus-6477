@@ -32,10 +32,6 @@
 <script setup lang="ts">
 import type { Recipe } from '~/types/database'
 
-definePageMeta({
-  middleware: 'auth'
-})
-
 const { fetchRecipes } = useRecipes()
 const recipes = ref<Recipe[]>([])
 const loading = ref(true)

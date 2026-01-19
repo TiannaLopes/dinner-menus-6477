@@ -61,10 +61,6 @@
 <script setup lang="ts">
 import type { Recipe } from '~/types/database'
 
-definePageMeta({
-  middleware: 'auth'
-})
-
 const route = useRoute()
 const router = useRouter()
 const { fetchRecipeById, deleteRecipe } = useRecipes()

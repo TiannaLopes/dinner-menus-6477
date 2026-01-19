@@ -4,8 +4,13 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   
   modules: [
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/supabase',
   ],
+
+  supabase: {
+    redirect: false,
+  },
 
   app: {
     // GitHub Pages requires baseURL to be set to repo name for project pages
