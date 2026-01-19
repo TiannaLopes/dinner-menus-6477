@@ -1,12 +1,7 @@
 <template>
   <div class="min-h-screen relative overflow-hidden">
-    <!-- Hero Background Image -->
-    <div class="absolute inset-0">
-      <img 
-        src="/hero-home.jpg" 
-        alt="Home" 
-        class="w-full h-full object-cover"
-      />
+    <!-- Hero Background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-primary-600 via-olive-500 to-evergreen-800">
       <div class="absolute inset-0 bg-gradient-to-b from-evergreen-900/60 via-evergreen-900/40 to-evergreen-900/70"></div>
     </div>
     
