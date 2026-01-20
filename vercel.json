@@ -1,0 +1,8 @@
+{
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "framework": "nuxtjs",
+  "outputDirectory": ".output/public",
+  "projectId": "prj_6woa5svXWx0xFZ2ASDjzranbDdGR"
+}

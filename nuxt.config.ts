@@ -23,9 +23,6 @@ export default defineNuxtConfig({
   },
 
   app: {
-    // GitHub Pages requires baseURL to be set to repo name for project pages
-    baseURL: process.env.NODE_ENV === 'production' ? '/dinner-menus-6477/' : '/',
-    buildAssetsDir: '_nuxt',
     head: {
       title: 'Dinner Menu Planner',
       meta: [
