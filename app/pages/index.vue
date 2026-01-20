@@ -1,9 +1,7 @@
 <template>
   <div class="min-h-screen relative overflow-hidden">
     <!-- Hero Background -->
-    <div class="absolute inset-0 bg-gradient-to-br from-primary-600 via-olive-500 to-evergreen-800">
-      <div class="absolute inset-0 bg-gradient-to-b from-evergreen-900/60 via-evergreen-900/40 to-evergreen-900/70"></div>
-    </div>
+  <img src="../assets/6477-hero.jpg"/>
     
     <!-- Content -->
     <div class="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 text-center">
