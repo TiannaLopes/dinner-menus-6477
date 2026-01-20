@@ -1,7 +1,10 @@
 <template>
   <div class="min-h-screen relative overflow-hidden">
     <!-- Hero Background -->
-  <img src="../assets/6477-hero.jpg"/>
+    <img src="/6477-hero.jpg" alt="Home" class="absolute inset-0 w-full h-full object-cover" />
+    
+    <!-- Overlay for better text readability -->
+    <div class="absolute inset-0 bg-gradient-to-b from-evergreen-900/50 via-olive-800/40 to-primary-900/60"></div>
     
     <!-- Content -->
     <div class="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 text-center">

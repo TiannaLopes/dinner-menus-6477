@@ -12,6 +12,16 @@ export default defineNuxtConfig({
     redirect: false,
   },
 
+  runtimeConfig: {
+    public: {
+      emailjsServiceId: process.env.EMAILJS_SERVICE_ID,
+      emailjsTemplateId: process.env.EMAILJS_TEMPLATE_ID,
+      emailjsPublicKey: process.env.EMAILJS_PUBLIC_KEY,
+      emailRequester: process.env.EMAIL_REQUESTER,
+      emailApprover: process.env.EMAIL_APPROVER,
+    }
+  },
+
   app: {
     // GitHub Pages requires baseURL to be set to repo name for project pages
     baseURL: process.env.NODE_ENV === 'production' ? '/dinner-menus-6477/' : '/',
